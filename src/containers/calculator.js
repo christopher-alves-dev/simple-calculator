@@ -3,7 +3,7 @@ import Display from '../components/display';
 import { Button } from '../components/button';
 
 class Calculator extends Component {
-  initialState = {firstValue: 0, secondValue: 0, operator: 1, isSum: false}
+  initialState = {firstValue: 0, secondValue: 0, operator: 1, isSum: false, isSubtraction: false, isMultiply: false, isDivision: false}
 
   constructor(props) {
     super(props);
@@ -25,17 +25,34 @@ class Calculator extends Component {
   }
 
   getValue = () => {
-    const { firstValue, secondValue, isSum, operator } = this.state
+    const { firstValue, secondValue, operator, isSum, isSubtraction, isMultiply, isDivision } = this.state
 
     switch (operator) {
       case 1: return firstValue;
       case 2: return secondValue;
-      case 3: return isSum ? firstValue + secondValue : firstValue - secondValue;
+      case 3: if (isSum) {
+          return firstValue + secondValue;
+        } else if (isSubtraction) {
+          return firstValue - secondValue;
+        } else if (isMultiply) {
+          return firstValue * secondValue;
+        } else if ((isDivision) && secondValue !== 0) {
+          return firstValue / secondValue;
+        } else {
+          return this.displayError('rgb(228, 93, 93)', '#000')
+        }
+      // return isSum ? firstValue + secondValue : firstValue - secondValue;
     }
   }
 
-  pickOperation = (isSum) => {
-    this.setState({ operator: 2, isSum });
+  displayError(bgColor, fontColor) {
+    const display = document.querySelector('.display');
+    display.classList.add('errorDivisor')
+    return 'Error: Divisor = 0'
+  }
+
+  pickOperation = (isSum, isSubtraction, isMultiply, isDivision) => {
+    this.setState({ operator: 2, isSum, isSubtraction, isMultiply, isDivision });
   }
 
   execOperation = () => {
@@ -43,6 +60,8 @@ class Calculator extends Component {
   }
 
   clear = () => {
+    const display = document.querySelector('.display');
+    display.classList.remove('errorDivisor');
     this.setState(this.initialState);
   }
 
@@ -65,13 +84,15 @@ class Calculator extends Component {
             <Button display={"8"} onClick={() => this.putValue(8)} disabled={operator === 3}/>
             <Button display={"9"} onClick={() => this.putValue(9)} disabled={operator === 3}/>
             <Button display={"0"} onClick={() => this.putValue(0)} disabled={operator === 3}/>
+            <Button display={"="} onClick={() => this.execOperation()} disabled={operator === 1}/>
+            <Button display={"C"} onClick={() => this.clear()}/>
           </div>
           
           <div className={"operatorsButtons"}>
-            <Button display={"+"} onClick={() => this.pickOperation(true)} disabled={operator !== 1}/>
-            <Button display={"-"} onClick={() => this.pickOperation(false)} disabled={operator !== 1}/>
-            <Button display={"="} onClick={() => this.execOperation()} disabled={operator === 1}/>
-            <Button display={"C"} onClick={() => this.clear()}/>
+            <Button display={"/"} onClick={() => this.pickOperation(false, false, false, true)} disabled={operator !== 1}/>
+            <Button display={"*"} onClick={() => this.pickOperation(false, false, true, false)} disabled={operator !== 1}/>
+            <Button display={"+"} onClick={() => this.pickOperation(true, false, false, false)} disabled={operator !== 1}/>
+            <Button display={"-"} onClick={() => this.pickOperation(false, true, false, false)} disabled={operator !== 1}/>
           </div>
 
         </div>

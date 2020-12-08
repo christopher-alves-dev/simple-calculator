@@ -37,7 +37,8 @@
 
 .button:hover {
   background-color: #04d361;
-  border: 2px solid #04d361
+  border: 2px solid #04d361;
+  color: #000;
 }
 
 .numbersButtons {
@@ -53,18 +54,18 @@
   place-items: end;
 }
 
-.operatorsButtons .button:nth-child(3) {
+.numbersButtons .button:nth-child(11) {
   background-color: rgb(253, 149, 31);
   border: 2px solid rgb(253, 149, 31);
 }
 
-.operatorsButtons .button:last-child { 
+.numbersButtons .button:last-child { 
   background-color: rgb(228, 93, 93);
   border: 2px solid rgb(228, 93, 93);
 }
 
-.operatorsButtons .button:nth-child(3):hover,
-.operatorsButtons .button:last-child:hover {
+.numbersButtons .button:nth-child(11):hover,
+.numbersButtons .button:last-child:hover {
   color: #121214;
   background-color: #737380;
   border: 2px solid #121214;
@@ -86,4 +87,9 @@
 
 .disabled {
   background-color: gainsboro;
+}
+
+.errorDivisor {
+  background-color: rgb(228, 93, 93);
+  color: #000;
 }

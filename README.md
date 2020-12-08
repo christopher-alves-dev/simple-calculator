@@ -6,7 +6,7 @@ Uma simples calculadora que realiza operações de soma e subtração, após rea
 # Preview
 
 <p align="center">
-  <img width="300" height="300" src="https://raw.githubusercontent.com/chrisleo-usa/simple-calculator/main/public/simple-calculator.png">
+  <img width="300" height="300" src="https://raw.githubusercontent.com/chrisleo-usa/simple-calculator/main/public/simple-calculator.gif">
 </p>
 
 ## Como utilizar:
