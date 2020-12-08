@@ -1,0 +1,89 @@
+@import url(https://allfont.net/allfont.css?fonts=digital-7);
+
+.screen {
+  min-width: 300px;
+
+  border: 2px solid #000;
+  border-radius: 8px;
+
+  padding: 1em 1.5em;
+
+  background-color: #737380;
+
+  font-family: 'Digital-7', sans-serif;
+}
+
+.containerButtons {
+  display: grid;
+  grid-template-columns: 3fr 0.5fr;
+}
+
+.button {
+  width: 2.5em;
+  height: 2.5em;
+  border: 2px solid #000;
+  border-radius: 4px;
+
+  display: grid;
+  place-items: center;
+
+  cursor: pointer;
+
+  background-color: #121214;
+  color: #fff;
+
+  transition: all .3s;
+}
+
+.button:hover {
+  background-color: #04d361;
+  border: 2px solid #04d361
+}
+
+.numbersButtons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5em 0;
+}
+
+.operatorsButtons {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5em 0;
+  place-items: end;
+}
+
+.operatorsButtons .button:nth-child(3) {
+  background-color: rgb(253, 149, 31);
+  border: 2px solid rgb(253, 149, 31);
+}
+
+.operatorsButtons .button:last-child { 
+  background-color: rgb(228, 93, 93);
+  border: 2px solid rgb(228, 93, 93);
+}
+
+.operatorsButtons .button:nth-child(3):hover,
+.operatorsButtons .button:last-child:hover {
+  color: #121214;
+  background-color: #737380;
+  border: 2px solid #121214;
+}
+
+.display {
+  font-size: 2rem;
+  text-align: right;
+
+  padding: 0.5em;
+  margin-bottom: 16px;
+
+  border: 1px solid #000;
+  border-radius: 4px;
+
+  background-color: #121214;
+  color: #04d361;
+}
+
+.disabled {
+  background-color: gainsboro;
+}
